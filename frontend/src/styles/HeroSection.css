@@ -1,0 +1,434 @@
+/* Hero Section - Premium Dark Theme with 3D Elements */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--bg-primary);
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(ellipse at top left, rgba(66, 133, 244, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(0, 255, 209, 0.1) 0%, transparent 50%);
+}
+
+/* Background Android Phone */
+.bg-phone-container {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  width: 400px;
+  height: 600px;
+  transform: translateY(-50%) rotate(-15deg);
+  opacity: 0.15;
+  z-index: 1;
+}
+
+.bg-phone-scene {
+  width: 100%;
+  height: 100%;
+}
+
+/* Floating 3D Shapes */
+.floating-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.shape {
+  position: absolute;
+  background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan));
+  border-radius: 0px;
+  animation: float 6s ease-in-out infinite;
+}
+
+.shape-1 {
+  width: 80px;
+  height: 80px;
+  top: 20%;
+  left: 10%;
+  animation-delay: -2s;
+  opacity: 0.7;
+  transform: rotate(45deg);
+}
+
+.shape-2 {
+  width: 60px;
+  height: 60px;
+  top: 60%;
+  right: 15%;
+  animation-delay: -4s;
+  opacity: 0.5;
+}
+
+.shape-3 {
+  width: 100px;
+  height: 100px;
+  bottom: 30%;
+  left: 5%;
+  animation-delay: -1s;
+  opacity: 0.3;
+  transform: rotate(30deg);
+}
+
+.shape-4 {
+  width: 40px;
+  height: 40px;
+  top: 40%;
+  right: 30%;
+  animation-delay: -3s;
+  opacity: 0.6;
+  transform: rotate(-15deg);
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xxl);
+  max-width: 1400px;
+  width: 100%;
+  align-items: center;
+  z-index: 2;
+  position: relative;
+  padding: 0 7.6923%;
+}
+
+.hero-text {
+  animation: fadeInLeft 1s ease-out;
+}
+
+.hero-greeting {
+  margin-bottom: var(--spacing-sm);
+}
+
+.greeting-text {
+  font-size: 20px;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.hero-name {
+  font-size: 66px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.62px;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.name-part {
+  display: block;
+  position: relative;
+}
+
+.name-part:first-child {
+  color: var(--primary-blue);
+}
+
+.hero-role {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.role-text {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--accent-cyan);
+  min-width: 400px;
+}
+
+.cursor {
+  font-size: 32px;
+  color: var(--accent-cyan);
+  animation: pulse 1.5s infinite;
+  margin-left: 4px;
+}
+
+.hero-tagline {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-xl);
+  max-width: 500px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+  flex-wrap: wrap;
+}
+
+.hero-btn {
+  min-width: 180px;
+  font-weight: 500;
+}
+
+.hero-social {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.social-btn {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--text-secondary);
+}
+
+.social-btn:hover {
+  background: var(--primary-blue);
+  color: #000000;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+.social-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Hero Visual Panel */
+.hero-visual {
+  animation: fadeInRight 1s ease-out 0.3s both;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  align-items: center;
+}
+
+/* Profile Photo */
+.profile-photo {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 0px;
+  overflow: hidden;
+  border: 3px solid var(--primary-blue);
+  background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan));
+  padding: 3px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0px;
+  transition: transform 0.3s ease;
+}
+
+.profile-photo:hover .profile-image {
+  transform: scale(1.05);
+}
+
+/* Remove the small 3D phone element styles since we moved it to background */
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0px;
+  padding: var(--spacing-xl);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.glass-panel::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(66, 133, 244, 0.1), transparent);
+  animation: rotate 8s linear infinite;
+  z-index: -1;
+}
+
+.panel-content {
+  position: relative;
+  z-index: 1;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.status-dot {
+  width: 12px;
+  height: 12px;
+  background: var(--accent-cyan);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.status-indicator span {
+  font-size: 16px;
+  color: var(--text-secondary);
+}
+
+.quick-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary-blue);
+  line-height: 1;
+}
+
+.stat-label {
+  display: block;
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: var(--spacing-lg);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  z-index: 2;
+}
+
+.scroll-line {
+  width: 2px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--primary-blue), transparent);
+  position: relative;
+}
+
+.scroll-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: var(--primary-blue);
+  border-radius: 50%;
+  animation: scroll-bounce 2s infinite;
+}
+
+.scroll-text {
+  font-size: 14px;
+  color: var(--text-muted);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(20px); }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .hero-content {
+    gap: var(--spacing-xl);
+    padding: 0 5%;
+  }
+  
+  .hero-name {
+    font-size: 56px;
+  }
+  
+  .role-text {
+    font-size: 28px;
+    min-width: 350px;
+  }
+}
+
+@media (max-width: 968px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: var(--spacing-xl);
+  }
+  
+  .hero-name {
+    font-size: 48px;
+  }
+  
+  .role-text {
+    font-size: 24px;
+    min-width: 300px;
+  }
+  
+  .hero-tagline {
+    max-width: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 0 20px;
+  }
+  
+  .hero-name {
+    font-size: 40px;
+  }
+  
+  .role-text {
+    font-size: 20px;
+    min-width: 250px;
+  }
+  
+  .hero-tagline {
+    font-size: 18px;
+  }
+  
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hero-btn {
+    width: 100%;
+    max-width: 300px;
+  }
+}
