@@ -72,7 +72,7 @@ function FlutterModel({ position = [0, 0, 0], scale = 1 }) {
   }
 
   return (
-    <group ref={meshRef} position={position} scale={[scale * 2, scale * 2, scale * 2]}>
+    <group ref={meshRef} position={position} scale={[scale * 3, scale * 3, scale * 3]}>
       <primitive object={scene.clone()} />
     </group>
   );
@@ -125,7 +125,7 @@ function BlimpModel({ position = [0, 0, 0], scale = 1 }) {
   }
 
   return (
-    <group ref={meshRef} position={position} scale={[scale * 0.3, scale * 0.3, scale * 0.3]}>
+    <group ref={meshRef} position={[position[0], position[1] - 0.3, position[2]]} scale={[scale * 0.2, scale * 0.2, scale * 0.2]}>
       <primitive object={scene.clone()} />
     </group>
   );

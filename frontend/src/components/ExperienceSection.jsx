@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { MapPin, Calendar, ExternalLink, ChevronRight } from 'lucide-react';
+import ThreeScene from './ThreeScene';
 import '../styles/ExperienceSection.css';
 
 const ExperienceSection = ({ data }) => {
@@ -26,6 +27,39 @@ const ExperienceSection = ({ data }) => {
     return () => observer.disconnect();
   }, []);
 
+  const getExperience3DModel = (experience) => {
+    // AI Automation experience gets the AI robot model
+    if (experience.type === 'AI Automation' || experience.role.toLowerCase().includes('automation')) {
+      return 'ai_robot';
+    }
+    return null;
+  };
+
+  const renderExperience3D = (experience) => {
+    const modelType = getExperience3DModel(experience);
+    
+    if (modelType) {
+      return (
+        <div className={`experience-3d-element ${modelType}-3d`}>
+          <ThreeScene modelType={modelType} />
+        </div>
+      );
+    }
+    
+    return null;
+  };
+
+  const renderN8nLogo = (experience) => {
+    if (experience.type === 'AI Automation' || experience.role.toLowerCase().includes('automation')) {
+      return (
+        <div className="n8n-logo-container">
+          <img src="/n8n_logo.png" alt="n8n Logo" className="n8n-logo" />
+        </div>
+      );
+    }
+    return null;
+  };
+
   return (
     <section id="experience" className="experience-section" ref={sectionRef}>
       <div className="experience-container">
@@ -49,6 +83,9 @@ const ExperienceSection = ({ data }) => {
               </div>
 
               <div className="experience-card">
+                {renderExperience3D(experience)}
+                {renderN8nLogo(experience)}
+                
                 <div className="card-header">
                   <div className="role-info">
                     <h3 className="role-title">{experience.role}</h3>

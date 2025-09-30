@@ -424,3 +424,63 @@
     font-size: 12px;
   }
 }
+/* Experience 3D Elements */
+.experience-3d-element {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 120px;
+  height: 120px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+  z-index: 5;
+}
+
+.experience-3d-element.ai_robot-3d {
+  width: 140px;
+  height: 140px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--accent-cyan);
+}
+
+.experience-3d-element canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* N8n Logo */
+.n8n-logo-container {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 80px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+.n8n-logo {
+  width: 70px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Experience Card Hover Effects */
+.experience-card:hover .experience-3d-element {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+.experience-card:hover .n8n-logo-container {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
