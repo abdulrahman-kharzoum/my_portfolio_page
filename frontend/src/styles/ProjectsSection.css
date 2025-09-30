@@ -491,3 +491,113 @@
   width: 100% !important;
   height: 100% !important;
 }
+
+/* More Projects Section */
+.more-projects-section {
+  margin-top: var(--spacing-xxl);
+  text-align: center;
+}
+
+.more-projects-toggle {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 16px 24px;
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.more-projects-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--primary-blue);
+  transform: translateY(-2px);
+}
+
+.more-projects-toggle svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.additional-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.additional-project {
+  transform: scale(0.95);
+  opacity: 0.9;
+}
+
+.additional-project:hover {
+  transform: scale(0.98);
+  opacity: 1;
+}
+
+.additional-project .project-content {
+  padding: var(--spacing-md);
+}
+
+.additional-project .project-title {
+  font-size: 20px;
+}
+
+.additional-project .project-description {
+  font-size: 14px;
+}
+
+.additional-project .achievements-list {
+  max-height: 120px;
+  overflow: hidden;
+}
+
+/* Projects Footer */
+.projects-footer {
+  margin-top: var(--spacing-xxl);
+  text-align: center;
+  padding-top: var(--spacing-xl);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.footer-text {
+  font-size: 16px;
+  color: var(--text-secondary);
+}
+
+.footer-link {
+  color: var(--primary-blue);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: var(--accent-cyan);
+}
+
+/* Responsive adjustments for additional projects */
+@media (max-width: 768px) {
+  .additional-projects-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+  
+  .additional-project {
+    transform: scale(1);
+  }
+  
+  .more-projects-toggle {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+}
