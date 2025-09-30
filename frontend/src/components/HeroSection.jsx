@@ -11,8 +11,7 @@ const HeroSection = ({ data }) => {
   const roles = [
     'Flutter Developer',
     'AI Automation Specialist', 
-    'Problem Solver',
-    'Innovation Driver'
+    'Problem Solver'
   ];
 
   useEffect(() => {

@@ -10,8 +10,8 @@ function PhoneModel({ position = [0, 0, 0], scale = 1 }) {
   
   useFrame((state) => {
     if (meshRef.current) {
-      meshRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.3;
-      meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * 0.8) * 0.2;
+      meshRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.3 + 500;
+      meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * 0.8) * 0.2 -2.5;
     }
   });
 
@@ -21,7 +21,7 @@ function PhoneModel({ position = [0, 0, 0], scale = 1 }) {
   }
 
   return (
-    <group ref={meshRef} position={position} scale={[scale * 0.5, scale * 0.5, scale * 0.5]}>
+    <group ref={meshRef} position={position} scale={[scale * 0.3, scale * 0.3, scale * 0.3]}>
       <primitive object={scene.clone()} />
       
       {/* Flutter Logo on Screen */}
@@ -40,7 +40,7 @@ function PhoneModel({ position = [0, 0, 0], scale = 1 }) {
       <mesh position={[0, 0, 0.11]}>
         <boxGeometry args={[0.15, 0.15, 0.01]} />
         <meshStandardMaterial 
-          color="#40D0FF" 
+          color="#052E3BFF" 
           emissive="#40D0FF" 
           emissiveIntensity={0.4}
         />
@@ -72,7 +72,7 @@ function FlutterModel({ position = [0, 0, 0], scale = 1 }) {
   }
 
   return (
-    <group ref={meshRef} position={position} scale={[scale * 3, scale * 3, scale * 3]}>
+    <group ref={meshRef} position={position} scale={[scale * 25, scale * 25, scale * 25]}>
       <primitive object={scene.clone()} />
     </group>
   );
@@ -86,7 +86,7 @@ function AIRobotModel({ position = [0, 0, 0], scale = 1 }) {
   useFrame((state) => {
     if (meshRef.current) {
       meshRef.current.rotation.y = state.clock.elapsedTime * 0.3;
-      meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * 0.7) * 0.15;
+      meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * 0.7) * 0.15 - 2.5;
     }
   });
 
@@ -101,7 +101,7 @@ function AIRobotModel({ position = [0, 0, 0], scale = 1 }) {
   }
 
   return (
-    <group ref={meshRef} position={position} scale={[scale * 0.8, scale * 0.8, scale * 0.8]}>
+    <group ref={meshRef} position={position} scale={[scale * 15, scale * 15, scale * 15]}>
       <primitive object={scene.clone()} />
     </group>
   );
@@ -115,7 +115,7 @@ function BlimpModel({ position = [0, 0, 0], scale = 1 }) {
   useFrame((state) => {
     if (meshRef.current) {
       meshRef.current.rotation.y = state.clock.elapsedTime * 0.2;
-      meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * 0.4) * 0.1;
+      meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * 0.4) * 0.1 - 1;
     }
   });
 
@@ -125,7 +125,7 @@ function BlimpModel({ position = [0, 0, 0], scale = 1 }) {
   }
 
   return (
-    <group ref={meshRef} position={[position[0], position[1] - 0.3, position[2]]} scale={[scale * 0.2, scale * 0.2, scale * 0.2]}>
+    <group ref={meshRef} position={[position[0], position[1] - 0.2, position[2]]} scale={[scale * 0.19, scale * 0.19, scale * 0.19]}>
       <primitive object={scene.clone()} />
     </group>
   );
@@ -284,7 +284,7 @@ function ThreeScene({
   return (
     <div className={className} style={{ width: '100%', height: '100%' }}>
       <Canvas
-        camera={{ position: [0, 0, 5], fov: 50 }}
+        camera={{ position: [0, 0, 8], fov: 50 }}
         style={{ width: '100%', height: '100%' }}
       >
         <ambientLight intensity={0.4} />
@@ -299,10 +299,9 @@ function ThreeScene({
         <OrbitControls 
           enableZoom={false} 
           enablePan={false} 
+          enableRotate={false}
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2.5}
-          autoRotate={true}
-          autoRotateSpeed={1}
         />
       </Canvas>
     </div>

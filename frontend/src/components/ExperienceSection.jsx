@@ -84,11 +84,12 @@ const ExperienceSection = ({ data }) => {
 
               <div className="experience-card">
                 {renderExperience3D(experience)}
-                {renderN8nLogo(experience)}
-                
                 <div className="card-header">
                   <div className="role-info">
-                    <h3 className="role-title">{experience.role}</h3>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                      <h3 className="role-title">{experience.role}</h3>
+                      {renderN8nLogo(experience)}
+                    </div>
                     <div className="company-info">
                       <span className="company-name">{experience.company}</span>
                       <div className="location-info">

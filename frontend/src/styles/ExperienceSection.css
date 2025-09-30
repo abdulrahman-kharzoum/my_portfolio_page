@@ -427,8 +427,8 @@
 /* Experience 3D Elements */
 .experience-3d-element {
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 200px;
+  right: 75px;
   width: 120px;
   height: 120px;
   background: rgba(0, 0, 0, 0.6);
@@ -440,8 +440,8 @@
 }
 
 .experience-3d-element.ai_robot-3d {
-  width: 140px;
-  height: 140px;
+  width: 210px;
+  height: 300px;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid var(--accent-cyan);
 }
@@ -453,9 +453,6 @@
 
 /* N8n Logo */
 .n8n-logo-container {
-  position: absolute;
-  top: 15px;
-  left: 15px;
   width: 80px;
   height: 30px;
   background: rgba(255, 255, 255, 0.95);
@@ -466,6 +463,8 @@
   align-items: center;
   justify-content: center;
   z-index: 5;
+  position: relative;
+  top: -6px;
 }
 
 .n8n-logo {
@@ -484,3 +483,4 @@
   transform: scale(1.05);
   transition: transform 0.3s ease;
 }
+
