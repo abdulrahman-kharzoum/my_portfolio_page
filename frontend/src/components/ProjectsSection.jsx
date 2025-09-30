@@ -46,15 +46,36 @@ const ProjectsSection = ({ data }) => {
     }
   };
 
+  const getProject3DModel = (project) => {
+    // AI Automation projects get the AI robot model
+    if (project.type === 'AI Automation' || project.title.toLowerCase().includes('automation')) {
+      return 'ai_robot';
+    }
+    
+    // Flutter applications get the Flutter logo model
+    if (project.category === 'mobile' || project.type === 'Flutter Development') {
+      return 'flutter';
+    }
+    
+    // Blimp Simulation gets the blimp model
+    if (project.title.toLowerCase().includes('blimp')) {
+      return 'blimp';
+    }
+    
+    return null;
+  };
+
   const renderProject3D = (project) => {
-    if (project.category === 'web3d' && project.title.includes('Blimp')) {
+    const modelType = getProject3DModel(project);
+    
+    if (modelType) {
       return (
-        <div className="project-3d-element blimp-3d">
-          <ThreeScene showBlimp={true} />
+        <div className={`project-3d-element ${modelType}-3d`}>
+          <ThreeScene modelType={modelType} />
         </div>
       );
     }
-    // Remove 3D phone from Flutter projects as requested
+    
     return null;
   };
 

@@ -459,3 +459,35 @@
     padding: 3px 8px;
   }
 }
+/* Additional 3D Model Styles */
+.project-3d-element.flutter-3d {
+  width: 120px;
+  height: 120px;
+  background: rgba(2, 86, 155, 0.2);
+  border: 1px solid #02569B;
+}
+
+.project-3d-element.ai_robot-3d {
+  width: 140px;
+  height: 140px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--accent-cyan);
+}
+
+.project-3d-element.phone-3d {
+  width: 100px;
+  height: 120px;
+  background: rgba(26, 26, 26, 0.3);
+  border: 1px solid #1a1a1a;
+}
+
+/* 3D Element Hover Effects */
+.project-card:hover .project-3d-element {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+.project-3d-element canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
