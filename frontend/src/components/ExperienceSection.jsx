@@ -132,6 +132,20 @@ const ExperienceSection = ({ data }) => {
                       ))}
                     </div>
                   </div>
+
+                  {experience.liveDemo && (
+                    <div className="experience-actions">
+                      <a 
+                        href={experience.liveDemo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-primary experience-btn"
+                      >
+                        <ExternalLink className="btn-icon" />
+                        <span>Live Demo</span>
+                      </a>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

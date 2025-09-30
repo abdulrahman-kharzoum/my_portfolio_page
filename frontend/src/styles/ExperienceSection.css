@@ -484,3 +484,21 @@
   transition: transform 0.3s ease;
 }
 
+/* Experience Actions */
+.experience-actions {
+  margin-top: var(--spacing-md);
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.experience-btn {
+  padding: 10px 16px;
+  font-size: 14px;
+  min-height: auto;
+  border-radius: 6px;
+}
+
+.experience-btn .btn-icon {
+  width: 16px;
+  height: 16px;
+}

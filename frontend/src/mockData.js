@@ -37,6 +37,7 @@ export const portfolioData = {
         "Improved data management efficiency across multiple platforms"
       ],
       technologies: ["n8n", "AI Automation", "RAG Systems", "Google Drive API", "Dropbox API"],
+      liveDemo: "https://clikview.com/gpt",
       icon: "🤖"
     }
   ],
@@ -72,6 +73,7 @@ export const portfolioData = {
         "Boosted visibility for local home kitchens"
       ],
       technologies: ["Flutter", "Social Media Integration", "Media Handling", "Real-time Features"],
+      github: "https://github.com/abdulrahman-kharzoum/homey_kitchen.git",
       image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop",
       category: "mobile"
     },
@@ -88,7 +90,7 @@ export const portfolioData = {
         "Integrated robust notification system using Pusher for timely updates"
       ],
       technologies: ["Flutter", "Google Maps", "Pusher", "Real-time Notifications", "GPS Tracking"],
-      github: "https://github.com/abdulrahman-kharzoum/eduCloud mobile",
+      github: "https://github.com/abdulrahman-kharzoum/eduCloud_mobile.git",
       image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&h=600&fit=crop",
       category: "mobile"
     },
@@ -105,7 +107,7 @@ export const portfolioData = {
         "Built interactive sky, sea, and mountain landscapes"
       ],
       technologies: ["Three.js", "JavaScript", "3D Modeling", "WebGL", "Animation"],
-      github: "https://github.com/BAHAA-THE-KING/Airship",
+      github: "https://github.com/BAHAA-THE-KING/Airship.git",
       image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop",
       category: "web3d"
     }

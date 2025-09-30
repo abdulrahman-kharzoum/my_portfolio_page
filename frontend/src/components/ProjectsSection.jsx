@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Github, ExternalLink, Calendar, Code, Smartphone, Globe } from 'lucide-react';
+import { Github, ExternalLink, Calendar, Code, Smartphone, Globe, ChevronDown, ChevronUp } from 'lucide-react';
 import ThreeScene from './ThreeScene';
 import '../styles/ProjectsSection.css';
 
 const ProjectsSection = ({ data }) => {
   const [visibleProjects, setVisibleProjects] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [showMoreProjects, setShowMoreProjects] = useState(false);
   const sectionRef = useRef(null);
 
   const categories = [
@@ -14,9 +15,22 @@ const ProjectsSection = ({ data }) => {
     { id: 'web3d', label: '3D Web', icon: <Globe /> }
   ];
 
-  const filteredProjects = selectedCategory === 'all' 
-    ? data 
-    : data.filter(project => project.category === selectedCategory);
+  // Separate featured projects from additional projects
+  const featuredProjects = data.filter(project => 
+    project.title !== 'EduCloud Mobile App'
+  );
+  
+  const additionalProjects = data.filter(project => 
+    project.title === 'EduCloud Mobile App'
+  );
+
+  const filteredFeaturedProjects = selectedCategory === 'all' 
+    ? featuredProjects 
+    : featuredProjects.filter(project => project.category === selectedCategory);
+
+  const filteredAdditionalProjects = selectedCategory === 'all' 
+    ? additionalProjects 
+    : additionalProjects.filter(project => project.category === selectedCategory);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -36,7 +50,7 @@ const ProjectsSection = ({ data }) => {
     projectElements?.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
-  }, [filteredProjects]);
+  }, [filteredFeaturedProjects, filteredAdditionalProjects, showMoreProjects]);
 
   const getProjectIcon = (category) => {
     switch (category) {
@@ -79,6 +93,83 @@ const ProjectsSection = ({ data }) => {
     return null;
   };
 
+  const renderProjectCard = (project, index, isAdditional = false) => (
+    <div
+      key={project.id}
+      className={`project-card ${isAdditional ? 'additional-project' : ''} ${visibleProjects.includes(index.toString()) ? 'visible' : ''}`}
+      data-index={index}
+    >
+      {renderProject3D(project)}
+      
+      <div className="project-image">
+        <img src={project.image} alt={project.title} />
+        <div className="project-overlay">
+          <div className="project-type">
+            {getProjectIcon(project.category)}
+            <span>{project.type}</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="project-content">
+        <div className="project-header">
+          <h3 className="project-title">{project.title}</h3>
+          <div className="project-duration">
+            <Calendar className="duration-icon" />
+            <span>{project.duration}</span>
+          </div>
+        </div>
+
+        <p className="project-description">{project.description}</p>
+
+        <div className="project-achievements">
+          <h4 className="achievements-title">Key Achievements:</h4>
+          <ul className="achievements-list">
+            {project.achievements.map((achievement, achievementIndex) => (
+              <li key={achievementIndex} className="achievement-item">
+                {achievement}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="project-technologies">
+          {project.technologies.map((tech, techIndex) => (
+            <span key={techIndex} className="tech-tag">
+              {tech}
+            </span>
+          ))}
+        </div>
+
+        <div className="project-actions">
+          {project.github && (
+            <a 
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary project-btn"
+            >
+              <Github className="btn-icon" />
+              <span>View Code</span>
+            </a>
+          )}
+          
+          {project.liveDemo && (
+            <a 
+              href={project.liveDemo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary project-btn"
+            >
+              <ExternalLink className="btn-icon" />
+              <span>Live Demo</span>
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <section id="projects" className="projects-section" ref={sectionRef}>
       <div className="projects-container">
@@ -88,14 +179,11 @@ const ProjectsSection = ({ data }) => {
         </div>
 
         <div className="category-filters">
-          {categories.map(category => (
+          {categories.map((category) => (
             <button
               key={category.id}
-              className={`filter-btn ${selectedCategory === category.id ? 'active' : ''}`}
-              onClick={() => {
-                setSelectedCategory(category.id);
-                setVisibleProjects([]);
-              }}
+              className={`category-btn ${selectedCategory === category.id ? 'active' : ''}`}
+              onClick={() => setSelectedCategory(category.id)}
             >
               {category.icon}
               <span>{category.label}</span>
@@ -104,91 +192,39 @@ const ProjectsSection = ({ data }) => {
         </div>
 
         <div className="projects-grid">
-          {filteredProjects.map((project, index) => (
-            <div
-              key={project.id}
-              className={`project-card ${visibleProjects.includes(index.toString()) ? 'visible' : ''}`}
-              data-index={index}
-            >
-              <div className="project-image">
-                <img src={project.image} alt={project.title} />
-                <div className="project-overlay">
-                  <div className="project-type-badge">
-                    {getProjectIcon(project.category)}
-                    <span>{project.type}</span>
-                  </div>
-                </div>
-                {renderProject3D(project)}
-              </div>
-
-              <div className="project-content">
-                <div className="project-header">
-                  <h3 className="project-title">{project.title}</h3>
-                  <div className="project-duration">
-                    <Calendar className="duration-icon" />
-                    <span>{project.duration}</span>
-                  </div>
-                </div>
-
-                <p className="project-description">{project.description}</p>
-
-                <div className="project-achievements">
-                  <h4 className="achievements-title">Key Achievements:</h4>
-                  <ul className="achievements-list">
-                    {project.achievements.slice(0, 3).map((achievement, index) => (
-                      <li key={index} className="achievement-item">
-                        {achievement}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="project-tech">
-                  <div className="tech-tags">
-                    {project.technologies.slice(0, 4).map((tech, index) => (
-                      <span key={index} className="tech-tag">
-                        {tech}
-                      </span>
-                    ))}
-                    {project.technologies.length > 4 && (
-                      <span className="tech-tag more">+{project.technologies.length - 4}</span>
-                    )}
-                  </div>
-                </div>
-
-                <div className="project-actions">
-                  {project.github && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="project-btn github-btn"
-                    >
-                      <Github className="btn-icon" />
-                      <span>View Code</span>
-                    </a>
-                  )}
-                  
-                  <button className="project-btn demo-btn">
-                    <ExternalLink className="btn-icon" />
-                    <span>Live Demo</span>
-                  </button>
-                </div>
-              </div>
-
-              <div className="project-glow"></div>
-            </div>
-          ))}
+          {filteredFeaturedProjects.map((project, index) => 
+            renderProjectCard(project, index)
+          )}
         </div>
+
+        {filteredAdditionalProjects.length > 0 && (
+          <div className="more-projects-section">
+            <button 
+              className="more-projects-toggle"
+              onClick={() => setShowMoreProjects(!showMoreProjects)}
+            >
+              <span>More Projects</span>
+              {showMoreProjects ? <ChevronUp /> : <ChevronDown />}
+            </button>
+            
+            {showMoreProjects && (
+              <div className="additional-projects-grid">
+                {filteredAdditionalProjects.map((project, index) => 
+                  renderProjectCard(project, filteredFeaturedProjects.length + index, true)
+                )}
+              </div>
+            )}
+          </div>
+        )}
 
         <div className="projects-footer">
           <p className="footer-text">
-            More exciting projects in development. Follow my journey on 
+            More exciting projects in development. Follow my journey on{' '}
             <a 
-              href="https://github.com/abdulrahman-kharzoum" 
-              target="_blank" 
+              href="https://github.com/abdulrahman-kharzoum"
+              target="_blank"
               rel="noopener noreferrer"
-              className="github-link"
+              className="footer-link"
             >
               GitHub
             </a>
