@@ -243,7 +243,7 @@
 }
 
 .project-tech {
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
 }
 
 .tech-tags {
@@ -599,5 +599,138 @@
   .more-projects-toggle {
     padding: 12px 20px;
     font-size: 14px;
+  }
+}
+
+/* Enhanced Mobile Responsiveness */
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    padding: 0 var(--spacing-md);
+  }
+  
+  .project-card {
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .project-3d-element {
+    width: 80px;
+    height: 80px;
+    top: 8px;
+    right: 8px;
+  }
+  
+  .project-3d-element.blimp-3d {
+    width: 120px;
+    height: 80px;
+  }
+  
+  .project-tech {
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .tech-tags {
+    gap: 6px;
+  }
+  
+  .tech-tag {
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+  
+  .project-actions {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .project-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .category-filters {
+    gap: var(--spacing-sm);
+    padding: 0 var(--spacing-md);
+  }
+  
+  .filter-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-container {
+    padding: 0 var(--spacing-sm);
+  }
+  
+  .project-card {
+    padding: var(--spacing-md);
+  }
+  
+  .project-title {
+    font-size: 20px;
+  }
+  
+  .project-description {
+    font-size: 14px;
+  }
+  
+  .achievement-item {
+    font-size: 13px;
+  }
+  
+  .project-3d-element {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .project-3d-element.blimp-3d {
+    width: 100px;
+    height: 60px;
+  }
+}
+
+/* Tablet Responsiveness */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+  
+  .project-card {
+    max-width: none;
+  }
+  
+  .project-3d-element {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .project-3d-element.blimp-3d {
+    width: 150px;
+    height: 100px;
+  }
+}
+
+/* Large Desktop Improvements */
+@media (min-width: 1400px) {
+  .projects-container {
+    max-width: 1600px;
+  }
+  
+  .projects-grid {
+    gap: var(--spacing-xxl);
+  }
+  
+  .project-3d-element {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .project-3d-element.blimp-3d {
+    width: 200px;
+    height: 140px;
   }
 }
