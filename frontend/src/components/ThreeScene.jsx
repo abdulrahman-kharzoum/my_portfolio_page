@@ -7,11 +7,14 @@ import * as THREE from 'three';
 function PhoneModel({ position = [0, 0, 0], scale = 1 }) {
   const meshRef = useRef();
   const { scene, error } = useGLTF('/phone.glb');
+  const targetRotation = Math.PI * 0.05; // Perfect angle at 9 degrees
   
   useFrame((state) => {
     if (meshRef.current) {
-      meshRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.3 + 500;
-      meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * 0.8) * 0.2 -2.5;
+      // Gentle tilt animation
+      meshRef.current.rotation.y = targetRotation + Math.sin(state.clock.elapsedTime * 0.4) * 0.08;
+      // Smooth floating motion
+      meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * 0.6) * 0.15 - 2.5;
     }
   });
 
@@ -40,7 +43,7 @@ function PhoneModel({ position = [0, 0, 0], scale = 1 }) {
       <mesh position={[0, 0, 0.11]}>
         <boxGeometry args={[0.15, 0.15, 0.01]} />
         <meshStandardMaterial 
-          color="#052E3BFF" 
+          color="#052E3B" 
           emissive="#40D0FF" 
           emissiveIntensity={0.4}
         />
@@ -53,11 +56,14 @@ function PhoneModel({ position = [0, 0, 0], scale = 1 }) {
 function FlutterModel({ position = [0, 0, 0], scale = 1 }) {
   const meshRef = useRef();
   const { scene, error } = useGLTF('/flutter.glb');
+  const targetRotation = Math.PI * 0.15; // Perfect angle at 27 degrees
   
   useFrame((state) => {
     if (meshRef.current) {
-      meshRef.current.rotation.y = state.clock.elapsedTime * 0.5;
-      meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * 0.6) * 0.1;
+      // Smooth rotation to perfect angle, then stop
+      meshRef.current.rotation.y += (targetRotation - meshRef.current.rotation.y) * 0.05;
+      // Gentle floating animation
+      meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * 0.4) * 0.08;
     }
   });
 
@@ -85,8 +91,10 @@ function AIRobotModel({ position = [0, 0, 0], scale = 1 }) {
   
   useFrame((state) => {
     if (meshRef.current) {
-      meshRef.current.rotation.y = state.clock.elapsedTime * 0.3;
-      meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * 0.7) * 0.15 - 2.5;
+      // Slow continuous rotation
+      meshRef.current.rotation.y = state.clock.elapsedTime * 0.2;
+      // Gentle hovering motion
+      meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * 0.5) * 0.12 - 2.5;
     }
   });
 
@@ -111,11 +119,14 @@ function AIRobotModel({ position = [0, 0, 0], scale = 1 }) {
 function BlimpModel({ position = [0, 0, 0], scale = 1 }) {
   const meshRef = useRef();
   const { scene, error } = useGLTF('/goodyear_blimp.glb');
+  const targetRotation = Math.PI * 0.1; // Perfect angle at 18 degrees
   
   useFrame((state) => {
     if (meshRef.current) {
-      meshRef.current.rotation.y = state.clock.elapsedTime * 0.2;
-      meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * 0.4) * 0.1 - 1;
+      // Smooth rotation to perfect angle, then gentle sway
+      meshRef.current.rotation.y = targetRotation + Math.sin(state.clock.elapsedTime * 0.3) * 0.05;
+      // Gentle floating motion
+      meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * 0.35) * 0.08 - 1;
     }
   });
 
