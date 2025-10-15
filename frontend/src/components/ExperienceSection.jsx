@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { MapPin, Calendar, ExternalLink, ChevronRight } from 'lucide-react';
 import ThreeScene from './ThreeScene';
 import '../styles/ExperienceSection.css';
+import portfolioData from '../mockData';
 
 const ExperienceSection = ({ data }) => {
   const [visibleItems, setVisibleItems] = useState([]);
@@ -151,21 +152,62 @@ const ExperienceSection = ({ data }) => {
             </div>
           ))}
         </div>
+          <div className="experience-stats">
+            {(() => {
+              // Compute stats from projects data in mockData
+              const projects = portfolioData.projects || [];
 
-        <div className="experience-stats">
-          <div className="stat-item">
-            <div className="stat-number">1+</div>
-            <div className="stat-label">Years Experience</div>
+              // Extract years from project.duration strings (e.g., 'May 2023 - August 2023' or '10/02/2025 - 10/13/2025')
+              const years = [];
+              projects.forEach((p) => {
+                if (p.duration) {
+                  const matches = p.duration.match(/\b(20\d{2})\b/g);
+                  if (matches) {
+                    matches.forEach((y) => years.push(Number(y)));
+                  }
+                }
+              });
+
+              let yearsExperience = 0;
+              if (years.length > 0) {
+                const minYear = Math.min(...years);
+                const maxYear = Math.max(...years);
+                const currentYear = new Date().getFullYear();
+                const endYear = Math.max(maxYear, currentYear);
+                yearsExperience = endYear - minYear + 1;
+              }
+
+              // Compute unique and total technologies across projects
+              const techSet = new Set();
+              let totalTechs = 0;
+              projects.forEach((p) => {
+                if (Array.isArray(p.technologies)) {
+                  totalTechs += p.technologies.length;
+                  p.technologies.forEach((t) => techSet.add((t || '').toString().toLowerCase()));
+                }
+              });
+
+              const uniqueTechCount = techSet.size;
+
+              return (
+                <>
+                  <div className="stat-item">
+                    <div className="stat-number">2+</div>
+                    <div className="stat-label">Years Experience</div>
+                  </div>
+                  <div className="stat-item">
+                    <div className="stat-number">{uniqueTechCount > 0 ? `${uniqueTechCount}+` : '0+'}</div>
+                    <div className="stat-label">Technologies Mastered</div>
+                  </div>
+                  <div className="stat-item">
+                    <div className="stat-number">{totalTechs > 0 ? `${totalTechs}+` : '0+'}</div>
+                    <div className="stat-label">Technologies</div>
+                  </div>
+                </>
+              );
+            })()
+            }
           </div>
-          <div className="stat-item">
-            <div className="stat-number">5+</div>
-            <div className="stat-label">Technologies Mastered</div>
-          </div>
-          <div className="stat-item">
-            <div className="stat-number">5+</div>
-            <div className="stat-label">Technologies</div>
-          </div>
-        </div>
       </div>
     </section>
   );

@@ -43,8 +43,26 @@ export const portfolioData = {
   ],
 
   projects: [
-    {
+      {
       id: 1,
+      title: "NeverMiss AI – AI-Powered Productivity Platform",
+      duration: "10/02/2025 - 10/13/2025",
+      type: "AI Automation",
+      description: "Full-stack AI assistant integrating Gmail, Google Calendar, and Tasks with voice interaction, meeting transcription, and secure token management.",
+      achievements: [
+        "Integrated Google Workspace APIs (Gmail, Calendar, Tasks) with a custom OAuth 2.0 flow and secure token refresh mechanism.",
+        "Designed stateless N8N workflow architecture to enable multi-user support and dynamic handling of user-specific OAuth tokens.",
+        "Implemented end-to-end encryption for sensitive user data stored in MongoDB using Fernet.",
+        "Developed bidirectional voice interaction using Web Speech API and automated meeting transcription via Fireflies API."
+      ],
+      technologies: ["React", "Python (FastAPI)", "MongoDB (Motor)", "N8N", "Google Gemini AI", "Firebase Auth", "OAuth 2.0", "Fernet", "Fireflies API"],
+      github: "",
+      liveDemo: "https://smartchat-ai-14.emergent.host",
+      image: "/intergrations .png",
+      category: "web3d"
+    },
+    {
+      id: 2,
       title: "Charity Mobile App",
       duration: "November 2024 - September 2025",
       type: "Flutter Development",
@@ -61,7 +79,7 @@ export const portfolioData = {
       category: "mobile"
     },
     {
-      id: 2,
+      id: 3,
       title: "HomyKitchen Mobile App",
       duration: "June 2024 - September 2024", 
       type: "Flutter Development",
@@ -78,7 +96,7 @@ export const portfolioData = {
       category: "mobile"
     },
     {
-      id: 3,
+      id: 4,
       title: "EduCloud Mobile App",
       duration: "May 2023 - August 2023",
       type: "Flutter Development", 
@@ -95,7 +113,7 @@ export const portfolioData = {
       category: "mobile"
     },
     {
-      id: 4,
+      id: 5,
       title: "Blimp Simulation Web App",
       duration: "August 2023 - September 2023",
       type: "3D Web Development",
@@ -108,9 +126,11 @@ export const portfolioData = {
       ],
       technologies: ["Three.js", "JavaScript", "3D Modeling", "WebGL", "Animation"],
       github: "https://github.com/BAHAA-THE-KING/Airship.git",
-      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop",
+      image: "/blimp_project.png",
+      demoVideo: "https://www.facebook.com/share/v/19DgjbW8Tp/",
       category: "web3d"
     }
+  
   ],
 
   education: {

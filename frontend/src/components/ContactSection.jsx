@@ -1,21 +1,10 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Github, Linkedin, Send, MessageSquare } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, MessageSquare } from 'lucide-react';
+import ThreeScene from './ThreeScene';
 import '../styles/ContactSection.css';
 
 const ContactSection = ({ data }) => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
 
   const handleContactClick = (type) => {
     switch (type) {
@@ -33,21 +22,7 @@ const ContactSection = ({ data }) => {
     }
   };
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    
-    // Create email with form data
-    const emailSubject = encodeURIComponent(formData.subject || 'Portfolio Contact');
-    const emailBody = encodeURIComponent(
-      `Hello Abdulrahman,\n\n` +
-      `Name: ${formData.name}\n` +
-      `Email: ${formData.email}\n\n` +
-      `Message:\n${formData.message}\n\n` +
-      `Best regards,\n${formData.name}`
-    );
-    
-    window.location.href = `mailto:${data.email}?subject=${emailSubject}&body=${emailBody}`;
-  };
+  // Removed send-message form for privacy; show AI robot instead in the form area
 
   const contactMethods = [
     {
@@ -157,78 +132,16 @@ const ContactSection = ({ data }) => {
           </div>
 
           <div className="contact-form-container">
-            <div className="form-header">
-              <h3 className="form-title">Send a Message</h3>
-              <p className="form-subtitle">Let's discuss your next project</p>
+            <div className="ai-robot-preview" style={{ width: '100%', height: '360px' }}>
+              <ThreeScene modelType="ai_robot" />
             </div>
-
-            <form className="contact-form" onSubmit={handleFormSubmit}>
-              <div className="form-row">
-                <div className="form-group">
-                  <label className="form-label">Your Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    className="form-input"
-                    placeholder="Enter your full name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    required
-                  />
-                </div>
-                
-                <div className="form-group">
-                  <label className="form-label">Email Address</label>
-                  <input
-                    type="email"
-                    name="email"
-                    className="form-input"
-                    placeholder="your.email@example.com"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                  />
-                </div>
-              </div>
-
-              <div className="form-group">
-                <label className="form-label">Subject</label>
-                <input
-                  type="text"
-                  name="subject"
-                  className="form-input"
-                  placeholder="What's this about?"
-                  value={formData.subject}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <label className="form-label">Message</label>
-                <textarea
-                  name="message"
-                  className="form-textarea"
-                  placeholder="Tell me about your project, ideas, or how we can work together..."
-                  rows="6"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-
-              <button type="submit" className="btn-primary form-submit">
-                <Send className="btn-icon" />
-                <span>Send Message</span>
-              </button>
-            </form>
           </div>
         </div>
 
         <div className="contact-footer">
           <div className="footer-content">
             <p className="footer-text">
-              © 2024 Abdulrahman Kharzoum. Crafted with passion and precision.
+              © 2025 Abdulrahman Kharzoum. Crafted with passion and precision.
             </p>
             <div className="footer-links">
               <span onClick={() => handleContactClick('github')} className="footer-link">

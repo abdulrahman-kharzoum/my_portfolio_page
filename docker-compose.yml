@@ -10,14 +10,14 @@ services:
     networks:
       - portfolio-network
 
-  backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    ports:
-      - "5000:5000"
-    networks:
-      - portfolio-network
+  # backend:
+  #   build:
+  #     context: ./backend
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "5000:5000"
+  #   networks:
+  #     - portfolio-network
 
 networks:
   portfolio-network:

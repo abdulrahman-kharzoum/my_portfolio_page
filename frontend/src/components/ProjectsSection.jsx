@@ -6,7 +6,6 @@ import '../styles/ProjectsSection.css';
 const ProjectsSection = ({ data }) => {
   const [visibleProjects, setVisibleProjects] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [showMoreProjects, setShowMoreProjects] = useState(false);
   const sectionRef = useRef(null);
 
   const categories = [
@@ -15,22 +14,11 @@ const ProjectsSection = ({ data }) => {
     { id: 'web3d', label: '3D Web', icon: <Globe /> }
   ];
 
-  // Separate featured projects from additional projects
-  const featuredProjects = data.filter(project => 
-    project.title !== 'EduCloud Mobile App'
-  );
-  
-  const additionalProjects = data.filter(project => 
-    project.title === 'EduCloud Mobile App'
-  );
-
+  // Show all projects (no separation between featured and additional)
+  const allProjects = data;
   const filteredFeaturedProjects = selectedCategory === 'all' 
-    ? featuredProjects 
-    : featuredProjects.filter(project => project.category === selectedCategory);
-
-  const filteredAdditionalProjects = selectedCategory === 'all' 
-    ? additionalProjects 
-    : additionalProjects.filter(project => project.category === selectedCategory);
+    ? allProjects 
+    : allProjects.filter(project => project.category === selectedCategory);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -50,7 +38,7 @@ const ProjectsSection = ({ data }) => {
     projectElements?.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
-  }, [filteredFeaturedProjects, filteredAdditionalProjects, showMoreProjects]);
+  }, [filteredFeaturedProjects]);
 
   const getProjectIcon = (category) => {
     switch (category) {
@@ -165,6 +153,18 @@ const ProjectsSection = ({ data }) => {
               <span>Live Demo</span>
             </a>
           )}
+
+          {project.demoVideo && (
+            <a
+              href={project.demoVideo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary project-btn"
+            >
+              <ExternalLink className="btn-icon" />
+              <span>Demo Video</span>
+            </a>
+          )}
         </div>
       </div>
     </div>
@@ -196,26 +196,6 @@ const ProjectsSection = ({ data }) => {
             renderProjectCard(project, index)
           )}
         </div>
-
-        {filteredAdditionalProjects.length > 0 && (
-          <div className="more-projects-section">
-            <button 
-              className="more-projects-toggle"
-              onClick={() => setShowMoreProjects(!showMoreProjects)}
-            >
-              <span>More Projects</span>
-              {showMoreProjects ? <ChevronUp /> : <ChevronDown />}
-            </button>
-            
-            {showMoreProjects && (
-              <div className="additional-projects-grid">
-                {filteredAdditionalProjects.map((project, index) => 
-                  renderProjectCard(project, filteredFeaturedProjects.length + index, true)
-                )}
-              </div>
-            )}
-          </div>
-        )}
 
         <div className="projects-footer">
           <p className="footer-text">

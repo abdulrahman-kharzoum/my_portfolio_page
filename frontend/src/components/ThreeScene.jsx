@@ -120,11 +120,11 @@ function BlimpModel({ position = [0, 0, 0], scale = 1 }) {
   const meshRef = useRef();
   const { scene, error } = useGLTF('/goodyear_blimp.glb');
   const targetRotation = Math.PI * 0.1; // Perfect angle at 18 degrees
-  
+
   useFrame((state) => {
     if (meshRef.current) {
-      // Smooth rotation to perfect angle, then gentle sway
-      meshRef.current.rotation.y = targetRotation + Math.sin(state.clock.elapsedTime * 0.3) * 0.05;
+      // Continuous slow rotation (360 over time)
+      meshRef.current.rotation.y = state.clock.elapsedTime * 0.2;
       // Gentle floating motion
       meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * 0.35) * 0.08 - 1;
     }

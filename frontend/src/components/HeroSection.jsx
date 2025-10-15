@@ -9,6 +9,7 @@ const HeroSection = ({ data }) => {
   const [isTyping, setIsTyping] = useState(true);
 
   const roles = [
+    'Software Engineer',
     'Flutter Developer',
     'AI Automation Specialist', 
     'Problem Solver'
@@ -45,7 +46,8 @@ const HeroSection = ({ data }) => {
   const handleDownloadResume = () => {
     // Mock download functionality
     const link = document.createElement('a');
-    link.href = 'https://customer-assets.emergentagent.com/job_premium-portfolio-8/artifacts/ldvi58cr_AbdulrahmanKharzoum.pdf';
+    // Prefer local copy placed in the public folder; falls back to remote if not available
+    link.href = '/Abdulrahman_Kharzoum_Resume.pdf';
     link.download = 'Abdulrahman_Kharzoum_Resume.pdf';
     link.click();
   };
@@ -164,16 +166,16 @@ const HeroSection = ({ data }) => {
               
               <div className="quick-stats">
                 <div className="stat">
-                  <span className="stat-number">4+</span>
-                  <span className="stat-label">Projects</span>
+                    <span className="stat-number">10+</span>
+                    <span className="stat-label">Projects</span>
                 </div>
                 <div className="stat">
-                  <span className="stat-number">1+</span>
-                  <span className="stat-label">Years Experience</span>
+                    <span className="stat-number">2+</span>
+                    <span className="stat-label">Years Experience</span>
                 </div>
                 <div className="stat">
-                  <span className="stat-number">4</span>
-                  <span className="stat-label">Projects</span>
+                    <span className="stat-number">5</span>
+                    <span className="stat-label">Flutter Projects</span>
                 </div>
               </div>
             </div>
